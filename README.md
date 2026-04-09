@@ -1,28 +1,39 @@
 # Subscription Tracker API
 
-A backend API for managing personal subscriptions such as streaming and recurring services. Such that one should never forget a running subscription.
+> 🚧 This project is currently under active development.
 
----
-
-## Status
-
-This project is currently under development. Functionality and structure are subject to change.
-
----
+A RESTful API for tracking and managing personal subscriptions — think Netflix, Spotify, and other recurring services. The goal is to give users a single place to monitor what they're subscribed to, when renewals are due, and how much they're spending.
 
 ## Tech Stack
 
-* Node.js
-* Express.js
-* MongoDB
+- **Runtime:** Node.js
+- **Framework:** Express.js
+- **Database:** MongoDB
 
----
+## Planned Features
 
-## Purpose
+- User authentication (sign up / sign in)
+- Full CRUD for subscriptions
+- View all subscriptions per user
+- Track upcoming renewal dates
+- Cancel subscriptions
 
-The API is designed to provide a centralized way to create, manage, and track subscription data.
+## API Routes
 
----
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/subscriptions` | Get all subscriptions |
+| GET | `/api/v1/subscriptions/:id` | Get subscription details |
+| POST | `/api/v1/subscriptions` | Create a subscription |
+| PUT | `/api/v1/subscriptions/:id` | Update a subscription |
+| DELETE | `/api/v1/subscriptions/:id` | Delete a subscription |
+| PUT | `/api/v1/subscriptions/:id/cancel` | Cancel a subscription |
+| GET | `/api/v1/subscriptions/upcoming-renewals` | Get upcoming renewals |
+| GET | `/api/v1/subscriptions/user/:id` | Get all subscriptions for a user |
+| POST | `/api/v1/auth/sign-up` | Register a new user |
+| POST | `/api/v1/auth/sign-in` | Sign in |
+
+## Getting Started
 
 ## Security
 
@@ -36,11 +47,10 @@ The following security measures are being implemented:
 * HTTP security headers (e.g., Helmet)
 * Rate limiting to prevent abuse
 
----
-
-## Running the Project
 
 ```bash
+# Install dependencies
 npm install
+
+# Run in development mode
 npm run dev
-```
