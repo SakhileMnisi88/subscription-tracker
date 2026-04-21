@@ -20,13 +20,14 @@ const subscriptionSchema = new mongoose.Schema({
        default: 'ZAR',
    },
     frequency: {
-        string: true,
-        enum: ['sports', 'news', 'entertainment', 'lifestyle', 'technology', 'finance', 'politics', 'other'],
+        type: String,
+        enum: ['daily', 'weekly', 'monthly', 'yearly'],
     },
     category: {
         type: String,
         required: true,
         trim: true,
+        enum: ['sports', 'news', 'entertainment', 'lifestyle', 'technology', 'finance', 'politics', 'other'],
     },
     status: {
         type: String,
@@ -43,7 +44,6 @@ const subscriptionSchema = new mongoose.Schema({
     },
     renewalDate: {
         type: Date,
-        required: true,
         validate: {
             validator: function(value) {
                 return value > this.startDate;
@@ -60,7 +60,7 @@ const subscriptionSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Auto calculate renewal date if missing (using this.startDate and renewal)
-subscriptionSchema.pre('save', function (next){
+subscriptionSchema.pre('save', function (){
     if(!this.renewalDate){
         const renewalPeriods = {
             daily: 1,
@@ -71,10 +71,10 @@ subscriptionSchema.pre('save', function (next){
         this.renewalDate = new Date(this.startDate);
         this.renewalDate.setDate(this.renewalDate.getDate() + renewalPeriods[this.frequency]);
     }
-    if (this. renewableDate < new Date()) {
+    if (this.renewalDate < new Date()) {
         this.status = 'expired';
     }
-    next();
+
 });
 
 const Subscription = mongoose.model('Subscription', subscriptionSchema);
