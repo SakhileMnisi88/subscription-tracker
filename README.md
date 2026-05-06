@@ -17,6 +17,7 @@ A RESTful API for tracking and managing personal subscriptions — think Netflix
 - View all subscriptions per user
 - Track upcoming renewal dates
 - Cancel subscriptions
+- React.js frontend 
 
 ## API Routes
 
