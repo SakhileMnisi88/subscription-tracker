@@ -1,6 +1,6 @@
 # Subscription Tracker API
 
-> 🚧 Currently under active development.
+
 
 A RESTful API for tracking and managing personal subscriptions — think Netflix, Spotify, and other recurring services. The goal is to give users a single place to monitor what they're subscribed to, when renewals are due, and how much they're spending.
 
